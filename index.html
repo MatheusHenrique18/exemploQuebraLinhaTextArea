@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	</head>
+	<body>
+
+		<div ng-app="myApp" ng-controller="myCtrl">
+
+			<h1>Quebra de Linha em Text Area</h1>
+
+			<textarea rows="30" cols="60" ng-model="texto" ng-keypress="formatarTexto(texto)">
+	  			
+	  		</textarea>
+  		</div>
+
+  		<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+
+			$scope.texto = "Texto de exemplo para iniciar variável";
+		    
+		    //INSERINDO QUEBRA DE LINHA NO TEXTO A CADA 60 CARACTERES
+		    $scope.formatarTexto = function(texto){
+		    	
+		    	var tamanhoTexto = texto.length;
+		    	var restoDivisao = tamanhoTexto % 61;
+		    	console.log("***O resto da divisão é: ", restoDivisao);
+
+		    	if(restoDivisao === 0){
+		    		$scope.texto = texto + '\n';
+		    		console.log("***Texto formadado com quebra de linha: ", texto);
+		    		
+		    	}
+		    }
+		});
+		</script>
+
+	</body>
+</html>
