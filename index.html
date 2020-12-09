@@ -8,16 +8,26 @@
 
 		<div ng-app="myApp" ng-controller="myCtrl">
 
-			<h1>Quebra de Linha em Text Area</h1>
-			<textarea rows="30" cols="60" ng-model="texto" ng-change="formatarTexto(texto)">
-	  		</textarea>
+			<div style="float: left;">
+				<h1>Quebra de Linha em Text Area</h1>
+				<textarea rows="30" cols="60" ng-model="texto" ng-change="formatarTexto(texto)" style="resize: none;">
+				</textarea>
+			</div>
+
+			<div style="float: right;">
+				<h1>Texto Modificado</h1>
+				<textarea rows="30" cols="60" wrap="off" ng-model="textoModificado" ng-change="formatarTexto(texto)" style="resize: none;" readonly>
+				</textarea>
+			</div>  
+			  
   		</div>
 
   		<script>
 		var app = angular.module('myApp', []);
 		app.controller('myCtrl', function($scope) {
 
-			$scope.texto = "";
+			$scope.texto = '';
+			$scope.textoModificado = '';
 		    
 		    //INSERINDO QUEBRA DE LINHA NO TEXTO A CADA 60 CARACTERES
 		    $scope.formatarTexto = function(texto){
@@ -37,7 +47,8 @@
 
 	    		}
 
-	    		//atribuirTexto(textoNovo);
+				
+	    		$scope.textoModificado = textoNovo;
 		    	
 		    	var textoOriginal = textoNovo.replace(/\n/g, "");
 		    	console.log("***textoOriginal", textoOriginal);
