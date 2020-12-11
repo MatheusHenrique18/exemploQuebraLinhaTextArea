@@ -9,7 +9,7 @@
 		<div ng-app="myApp" ng-controller="myCtrl">
 
 			<div style="text-align: center;">
-				<b>Qtd de caracteres por linha: </b><input type="text" ng-model="qtdCaracteres" numeric-only ui-mask="99999">
+				<b>Qtd de caracteres por linha: </b><input type="text" ng-model="qtdCaracteres" numeric-only>
 			</div>
 
 			<br/>
@@ -57,7 +57,6 @@
 			$scope.texto = '';
 			$scope.textoModificado = '';
 		    
-		    //INSERINDO QUEBRA DE LINHA NO TEXTO A CADA 5 CARACTERES
 		    $scope.formatarTexto = function(texto){
 
 		    	var tamanhoDoTextoQueVouQuebrar = texto.length;
@@ -82,10 +81,6 @@
 		    	console.log("***textoOriginal", textoOriginal);
 		    	console.log("***textoNovo", textoNovo);
 		    	
-		    }
-
-		    function atribuirTexto(textoNovo){
-		    	$scope.texto = textoNovo;
 		    }
 
 		});
